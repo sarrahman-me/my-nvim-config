@@ -5,6 +5,37 @@ return {
     opts = require "configs.conform", -- event = 'BufWritePre', -- uncomment for format on save
   },
   {
+    "jose-elias-alvarez/nvim-lsp-ts-utils",
+    requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    config = function()
+      local ts_utils = require "nvim-lsp-ts-utils"
+
+      local on_attach = function(client, bufnr)
+        local opts = { noremap = true, silent = true }
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
+        -- additional bindings...
+
+        ts_utils.setup {}
+        ts_utils.setup_client(client)
+      end
+
+      require("lspconfig").tsserver.setup {
+        on_attach = on_attach,
+        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+        cmd = { "typescript-language-server", "--stdio" },
+      }
+    end,
+  },
+  {
+    "jose-elias-alvarez/typescript.nvim",
+    config = function()
+      require("typescript").setup {}
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
     config = function()
       require "configs.lspconfig"
@@ -94,6 +125,7 @@ return {
         "vim",
         "lua",
         "vimdoc",
+        "svelte",
       },
       highlight = {
         enable = true,

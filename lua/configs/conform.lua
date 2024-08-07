@@ -1,3 +1,5 @@
+-- conform.lua
+
 local options = {
   formatters_by_ft = {
     lua = { "stylua" },
@@ -6,9 +8,10 @@ local options = {
     css = { "prettier" },
     html = { "prettier" },
     tsx = { "prettier" },
+    json = { "prettier" },
   },
 
-  format_on_save = true, -- Aktifkan format otomatis saat menyimpan
+  format_on_save = true,
 }
 
 return options
