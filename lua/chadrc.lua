@@ -19,7 +19,7 @@ M.ui = {
     theme = "minimal",
     separator_style = "round",
   },
-  -- transparency = true,
+  transparency = true,
 
   nvdash = {
     load_on_startup = true,

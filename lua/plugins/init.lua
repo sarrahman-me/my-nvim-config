@@ -12,8 +12,6 @@ return {
       require "configs.lspconfig"
     end,
   },
-  -- Menghapus plugin yang tidak relevan: "noahfrederick/vim-laravel" dan "jwalton512/vim-blade"
-
   -- Plugin untuk auto formatting untuk berbagai bahasa
   {
     "sbdchd/neoformat",
@@ -154,8 +152,6 @@ return {
       vim.api.nvim_set_keymap("n", "<leader>n", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
     end,
   },
-  -- Menghapus "justinmk/vim-sneak" karena fungsinya mirip dengan "hop.nvim"
-
   -- Plugin untuk manipulasi karakter sekeliling
   { "tpope/vim-surround" },
   -- Plugin untuk memudahkan penambahan dan penghapusan komentar
@@ -191,7 +187,6 @@ return {
         },
         highlight = {
           enable = true,
-          additional_vim_regex_highlighting = { "blade" },
         },
         indent = {
           enable = true,
@@ -220,8 +215,6 @@ return {
       }
     end,
   },
-  -- Menghapus "ray-x/guihua.lua" karena tidak relevan
-  -- Menghapus "ray-x/navigator.lua" karena tidak relevan
   -- Plugin untuk menampilkan signature fungsi saat coding
   {
     "ray-x/lsp_signature.nvim",
