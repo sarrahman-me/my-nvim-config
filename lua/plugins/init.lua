@@ -5,6 +5,12 @@ return {
     event = "BufWritePre",
     opts = require "configs.conform",
   },
+
+  -- Emmet
+  {
+    "mattn/emmet-vim",
+    ft = { "html", "css", "javascriptreact", "typescriptreact", "vue", "blade", "php", "javascript", "typescript" },
+  },
   -- Plugin untuk konfigurasi LSP di Neovim
   {
     "neovim/nvim-lspconfig",

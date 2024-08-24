@@ -20,6 +20,7 @@ local servers = {
   "nginx_language_server", -- Nginx LSP
   "lua_ls", -- Lua LSP
   "gopls", -- golang
+  "emmet_ls",
 }
 
 for _, lsp in ipairs(servers) do
@@ -41,6 +42,12 @@ lspconfig.gopls.setup {
   },
 }
 
+lspconfig.emmet_ls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  filetypes = { "html", "css", "javascriptreact", "typescriptreact", "javascript", "typescript" }, -- tambahkan filetype yang sesuai
+}
 -- Konfigurasi tambahan untuk tsserver
 lspconfig.tsserver.setup {
   on_attach = function(client, bufnr)
