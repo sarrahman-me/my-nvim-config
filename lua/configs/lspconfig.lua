@@ -46,8 +46,9 @@ lspconfig.emmet_ls.setup {
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
-  filetypes = { "html", "css", "javascriptreact", "typescriptreact", "javascript", "typescript" }, -- tambahkan filetype yang sesuai
+  filetypes = { "html", "css", "javascriptreact", "typescriptreact", "javascript", "typescript" },
 }
+
 -- Konfigurasi tambahan untuk tsserver
 lspconfig.tsserver.setup {
   on_attach = function(client, bufnr)
@@ -63,6 +64,7 @@ lspconfig.tsserver.setup {
     vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
   end,
   capabilities = nvlsp.capabilities,
+  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 }
 
 lspconfig.rust_analyzer.setup {
@@ -83,6 +85,31 @@ lspconfig.rust_analyzer.setup {
       -- },
       checkOnSave = {
         command = "clippy",
+      },
+    },
+  },
+}
+
+lspconfig.pylsp.setup {
+  on_attach = function(client, bufnr)
+    nvlsp.on_attach(client, bufnr)
+    local opts = { noremap = true, silent = true }
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<Cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>r", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
+  end,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  settings = {
+    pylsp = {
+      plugins = {
+        pylint = { enabled = true, executable = "pylint" },
+        pyflakes = { enabled = false },
+        pycodestyle = { enabled = false },
+        pylsp_mypy = { enabled = true },
+        pylsp_rope = { enabled = true },
+        pylsp_black = { enabled = true },
+        pylsp_isort = { enabled = true },
+        pylsp_yapf = { enabled = false },
       },
     },
   },

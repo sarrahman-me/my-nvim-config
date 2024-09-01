@@ -145,7 +145,7 @@ return {
     config = function()
       require("nvim-tree").setup {
         view = {
-          width = 40,
+          width = 30,
           side = "left",
           mappings = {
             list = {
@@ -261,6 +261,22 @@ return {
     config = function()
       vim.g.go_fmt_command = "goimports"
       vim.g.go_autodetect_gopath = 1
+    end,
+  },
+  {
+    "saecki/crates.nvim",
+    ft = { "toml" },
+    config = function()
+      require("crates").setup {
+        completion = {
+          cmp = {
+            enabled = true,
+          },
+        },
+      }
+      require("cmp").setup.buffer {
+        sources = { { name = "crates" } },
+      }
     end,
   },
 }
