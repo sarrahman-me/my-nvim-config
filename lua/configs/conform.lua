@@ -1,6 +1,7 @@
 local options = {
   formatters_by_ft = {
     go = { "gofumpt", "gofmt" }, -- Formatter untuk Go
+    asm = { "asmfmt" }, -- Formatter untuk Assembly
     dart = { "dartfmt" },
     lua = { "stylua" }, -- Formatter untuk Lua
     python = { "black" }, -- Formatter untuk Python

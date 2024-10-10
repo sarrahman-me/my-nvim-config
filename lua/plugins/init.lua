@@ -6,6 +6,16 @@ return {
     opts = require "configs.conform",
   },
 
+  -- Plugin untuk Markdown Preview
+  {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
+
   -- Emmet
   {
     "mattn/emmet-vim",
@@ -190,6 +200,7 @@ return {
           "vimdoc",
           "svelte",
           "vue",
+          "asm",
         },
         highlight = {
           enable = true,

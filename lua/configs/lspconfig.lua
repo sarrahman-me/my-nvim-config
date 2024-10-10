@@ -21,6 +21,7 @@ local servers = {
   "lua_ls", -- Lua LSP
   "gopls", -- golang
   "emmet_ls",
+  "asm_lsp",
 }
 
 for _, lsp in ipairs(servers) do
@@ -30,6 +31,13 @@ for _, lsp in ipairs(servers) do
     capabilities = nvlsp.capabilities,
   }
 end
+
+lspconfig.asm_lsp.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  filetypes = { "asm", "s" },
+}
 
 lspconfig.gopls.setup {
   on_attach = nvlsp.on_attach,
