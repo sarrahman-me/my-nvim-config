@@ -22,6 +22,7 @@ local servers = {
   "gopls", -- golang
   "emmet_ls",
   "asm_lsp",
+  "hls", -- haskell
 }
 
 for _, lsp in ipairs(servers) do
