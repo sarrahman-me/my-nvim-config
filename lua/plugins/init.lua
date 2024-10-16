@@ -155,7 +155,7 @@ return {
     config = function()
       require("nvim-tree").setup {
         view = {
-          width = 30,
+          width = 35,
           side = "left",
           mappings = {
             list = {
@@ -201,6 +201,7 @@ return {
           "svelte",
           "vue",
           "asm",
+          "sql",
         },
         highlight = {
           enable = true,
