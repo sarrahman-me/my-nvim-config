@@ -23,6 +23,7 @@ local servers = {
   "emmet_ls",
   "asm_lsp",
   "hls", -- haskell
+  "prismals", -- prisma
 }
 
 for _, lsp in ipairs(servers) do

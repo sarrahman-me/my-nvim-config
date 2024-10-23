@@ -202,6 +202,7 @@ return {
           "vue",
           "asm",
           "sql",
+          "prisma",
         },
         highlight = {
           enable = true,
