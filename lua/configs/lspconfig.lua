@@ -2,27 +2,28 @@ local lspconfig = require "lspconfig"
 local nvlsp = require "nvchad.configs.lspconfig"
 
 local servers = {
-  "html", -- HTML LSP
+  "html",          -- HTML LSP
   "rust_analyzer", -- Rust Analyzer
-  "pylsp", -- Python LSP
-  "tailwindcss", -- Tailwind CSS LSP
-  "sqls", -- SQL LSP
-  "clangd", -- C/C++ LSP
-  "eslint", -- ESLint LSP
-  "nextls", -- Next.js LSP
-  "jsonls", -- JSON LSP
-  "tsserver", -- TypeScript/JavaScript LSP
-  "bashls", -- Bash LSP
-  "cssls", -- CSS LSP
-  "dockerls", -- Dockerfile LSP
+  -- "pylsp",                           -- Python LSP
+  "pyright",
+  "tailwindcss",                     -- Tailwind CSS LSP
+  "sqls",                            -- SQL LSP
+  "clangd",                          -- C/C++ LSP
+  "eslint",                          -- ESLint LSP
+  "nextls",                          -- Next.js LSP
+  "jsonls",                          -- JSON LSP
+  "tsserver",                        -- TypeScript/JavaScript LSP
+  "bashls",                          -- Bash LSP
+  "cssls",                           -- CSS LSP
+  "dockerls",                        -- Dockerfile LSP
   "docker_compose_language_service", -- Docker Compose LSP
-  "yamlls", -- YAML LSP
-  "nginx_language_server", -- Nginx LSP
-  "lua_ls", -- Lua LSP
-  "gopls", -- golang
+  "yamlls",                          -- YAML LSP
+  "nginx_language_server",           -- Nginx LSP
+  "lua_ls",                          -- Lua LSP
+  "gopls",                           -- golang
   "emmet_ls",
   "asm_lsp",
-  "hls", -- haskell
+  "hls",      -- haskell
   "prismals", -- prisma
 }
 
@@ -100,27 +101,13 @@ lspconfig.rust_analyzer.setup {
   },
 }
 
-lspconfig.pylsp.setup {
-  on_attach = function(client, bufnr)
-    nvlsp.on_attach(client, bufnr)
-    local opts = { noremap = true, silent = true }
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<Cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-    vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>r", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
-  end,
+lspconfig.pyright.setup {
+  on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
   settings = {
-    pylsp = {
-      plugins = {
-        pylint = { enabled = true, executable = "pylint" },
-        pyflakes = { enabled = false },
-        pycodestyle = { enabled = false },
-        pylsp_mypy = { enabled = true },
-        pylsp_rope = { enabled = true },
-        pylsp_black = { enabled = true },
-        pylsp_isort = { enabled = true },
-        pylsp_yapf = { enabled = false },
-      },
-    },
+    python = {
+      pythonPath = "./venv/bin/python" -- Ganti dengan path ke Python di venv Anda
+    }
   },
 }
