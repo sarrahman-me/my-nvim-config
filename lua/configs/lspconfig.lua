@@ -2,29 +2,29 @@ local lspconfig = require "lspconfig"
 local nvlsp = require "nvchad.configs.lspconfig"
 
 local servers = {
-  "html",          -- HTML LSP
+  "html", -- HTML LSP
   "rust_analyzer", -- Rust Analyzer
-  -- "pylsp",                           -- Python LSP
   "pyright",
-  "tailwindcss",                     -- Tailwind CSS LSP
-  "sqls",                            -- SQL LSP
-  "clangd",                          -- C/C++ LSP
-  "eslint",                          -- ESLint LSP
-  "nextls",                          -- Next.js LSP
-  "jsonls",                          -- JSON LSP
-  "tsserver",                        -- TypeScript/JavaScript LSP
-  "bashls",                          -- Bash LSP
-  "cssls",                           -- CSS LSP
-  "dockerls",                        -- Dockerfile LSP
+  "tailwindcss", -- Tailwind CSS LSP
+  "sqls", -- SQL LSP
+  "clangd", -- C/C++ LSP
+  "eslint", -- ESLint LSP
+  "nextls", -- Next.js LSP
+  "jsonls", -- JSON LSP
+  "tsserver", -- TypeScript/JavaScript LSP
+  "bashls", -- Bash LSP
+  "cssls", -- CSS LSP
+  "dockerls", -- Dockerfile LSP
   "docker_compose_language_service", -- Docker Compose LSP
-  "yamlls",                          -- YAML LSP
-  "nginx_language_server",           -- Nginx LSP
-  "lua_ls",                          -- Lua LSP
-  "gopls",                           -- golang
+  "yamlls", -- YAML LSP
+  "nginx_language_server", -- Nginx LSP
+  "lua_ls", -- Lua LSP
+  "gopls", -- golang
   "emmet_ls",
   "asm_lsp",
-  "hls",      -- haskell
+  "hls", -- haskell
   "prismals", -- prisma
+  "dartls",
 }
 
 for _, lsp in ipairs(servers) do
@@ -107,7 +107,7 @@ lspconfig.pyright.setup {
   capabilities = nvlsp.capabilities,
   settings = {
     python = {
-      pythonPath = "./venv/bin/python" -- Ganti dengan path ke Python di venv Anda
-    }
+      pythonPath = "./venv/bin/python",
+    },
   },
 }
