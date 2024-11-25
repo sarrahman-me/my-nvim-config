@@ -203,6 +203,9 @@ return {
           "asm",
           "sql",
           "prisma",
+          "dart",
+          "python",
+          "c",
         },
         highlight = {
           enable = true,
@@ -291,5 +294,14 @@ return {
         sources = { { name = "crates" } },
       }
     end,
+  },
+  {
+    "nvim-flutter/flutter-tools.nvim",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "stevearc/dressing.nvim", -- optional for vim.ui.select
+    },
+    config = true,
   },
 }
