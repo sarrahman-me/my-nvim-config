@@ -25,6 +25,7 @@ local servers = {
   "hls", -- haskell
   "prismals", -- prisma
   "dartls",
+  "cmake",
 }
 
 for _, lsp in ipairs(servers) do
@@ -34,6 +35,13 @@ for _, lsp in ipairs(servers) do
     capabilities = nvlsp.capabilities,
   }
 end
+
+lspconfig.clangd.setup {
+  cmd = { "/opt/homebrew/opt/llvm/bin/clangd" },
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+}
 
 lspconfig.asm_lsp.setup {
   on_attach = nvlsp.on_attach,
@@ -101,13 +109,13 @@ lspconfig.rust_analyzer.setup {
   },
 }
 
-lspconfig.pyright.setup {
-  on_attach = nvlsp.on_attach,
-  on_init = nvlsp.on_init,
-  capabilities = nvlsp.capabilities,
-  settings = {
-    python = {
-      pythonPath = "./venv/bin/python",
-    },
-  },
-}
+-- lspconfig.pyright.setup {
+--   on_attach = nvlsp.on_attach,
+--   on_init = nvlsp.on_init,
+--   capabilities = nvlsp.capabilities,
+--   settings = {
+--     python = {
+--       pythonPath = "./venv/bin/python",
+--     },
+--   },
+-- }
