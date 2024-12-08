@@ -205,7 +205,9 @@ return {
           "prisma",
           "dart",
           "python",
+          "java",
           "c",
+          "php",
         },
         highlight = {
           enable = true,

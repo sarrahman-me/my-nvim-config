@@ -26,6 +26,9 @@ local servers = {
   "prismals", -- prisma
   "dartls",
   "cmake",
+  "jdtls",
+  "lemminx",
+  "intelephense",
 }
 
 for _, lsp in ipairs(servers) do
@@ -36,11 +39,26 @@ for _, lsp in ipairs(servers) do
   }
 end
 
+lspconfig.jdtls.setup {
+  cmd = { "jdtls", "-javaagent:/Users/sarrahman/.m2/repository/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" },
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+}
+
 lspconfig.clangd.setup {
   cmd = { "/opt/homebrew/opt/llvm/bin/clangd" },
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
+  filetypes = { "cpp", "cc", "h", "hpp" },
+  init_options = {
+    fallbackFlags = {
+      "-std=c++17",
+      "-I/opt/homebrew/include",
+      "-L/opt/homebrew/lib",
+    },
+  },
 }
 
 lspconfig.asm_lsp.setup {
