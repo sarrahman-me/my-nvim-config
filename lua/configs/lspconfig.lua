@@ -110,19 +110,16 @@ lspconfig.rust_analyzer.setup {
   capabilities = nvlsp.capabilities,
   settings = {
     ["rust-analyzer"] = {
-      -- cargo = {
-      --   allFeatures = true,
-      -- },
-      -- procMacro = {
-      --   enable = true,
-      -- },
-      -- diagnostics = {
-      --   enable = true,
-      --   enableExperimental = true,
-      -- },
-      checkOnSave = {
+      cargo = {
+        allFeatures = true,
+      },
+      procMacro = {
+        enable = true,
+      },
+      check = {
         command = "clippy",
       },
+      checkOnSave = true,
     },
   },
 }
