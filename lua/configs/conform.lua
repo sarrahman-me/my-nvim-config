@@ -5,6 +5,7 @@ local options = {
     -- dart = { "dartfmt" },
     -- lua = { "stylua" }, -- Formatter untuk Lua
     python = { "black" }, -- Formatter untuk Python
+    sql = { "sql_formatter" },
     -- py = { "black" }, -- Alias untuk Python
     -- css = { "prettier" }, -- Formatter untuk CSS
     -- html = { "prettier" }, -- Formatter untuk HTML
