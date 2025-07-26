@@ -25,7 +25,7 @@ local servers = {
   "hls", -- haskell
   "prismals", -- prisma
   "dartls",
-  "cmake",
+  "neocmake",
   "jdtls",
   "lemminx",
   "intelephense",

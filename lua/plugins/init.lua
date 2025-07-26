@@ -194,6 +194,7 @@ return {
           "typescript",
           "tsx",
           "html",
+          "cpp",
           "css",
           "vim",
           "lua",
